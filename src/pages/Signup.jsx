@@ -35,8 +35,10 @@ const Signup = () => {
     data.append("avatar", avatar);
 
     try {
+      console.log("Submitting form with data:")
       const res = await axios.post(`${server}/api/users/register`, data, {
         headers: { "Content-Type": "multipart/form-data" },
+        credentials: true,
       });
       console.log("User registered:", res.data);
       alert("Signup successful!"); 

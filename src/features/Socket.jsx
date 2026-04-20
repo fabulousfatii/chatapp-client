@@ -10,7 +10,13 @@ const getSocket = ()=> useContext(SocketContext);
 export const SocketProvider = ({ children }) => {
  const socket = useMemo(() => {
     // Initialize your socket connection here
-    const newSocket = io( server, {withCredentials: true}); // Replace with your server URL
+    // const newSocket = io( server, {withCredentials: true}); // Replace with your server URL
+    // import { io } from "socket.io-client";
+
+const newSocket = io(server, {
+  transports: ["websocket"],   // 🔥 IMPORTANT
+  withCredentials: true
+});
     return newSocket;
   }, []);
 //   console.log(socket)

@@ -1,4 +1,4 @@
-{
+ {
   "env": {
     "VITE_SERVER": "https://chatapp-server-lqpe.onrender.com"
   }

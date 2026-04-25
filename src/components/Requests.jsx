@@ -110,7 +110,7 @@ useEffect(() => {
       >
         <Bell
           size={22}
-          className="cursor-pointer hover:text-blue-400 transition"
+          className="cursor-pointer hover:text-blue-400 mt-2 transition"
         />
         {requests > 0 && (
           <span className="absolute -top-1 -right-1 bg-red-500 text-xs text-white px-1.5 rounded-full">

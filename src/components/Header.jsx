@@ -48,14 +48,14 @@ const Header = () => {
       </div>
 
       {/* Middle: Search Bar */}
-      <div className="hidden md:flex items-center bg-gray-800 px-3 py-1 rounded-full w-1/3">
+      {/* <div className="hidden md:flex items-center bg-gray-800 px-3 py-1 rounded-full w-1/3">
         <Search size={18} className="text-gray-400" />
         <input
           type="text"
           placeholder="Search chats..."
           className="bg-transparent outline-none text-sm text-white ml-2 w-full placeholder-gray-400"
         />
-      </div>
+      </div> */}
 
       {/* Right: Icons and User Profile */}
       <div className="flex items-center space-x-4">

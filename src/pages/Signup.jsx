@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { server } from "../constant/config";
+import {toast} from 'react-toastify'
+import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +13,7 @@ const Signup = () => {
   });
   const [avatar, setAvatar] = useState(null);
   const [preview, setPreview] = useState(null); 
+  const navigate = useNavigate();
 
   // Handle text inputs
   const handleChange = (e) => {
@@ -40,11 +44,11 @@ const Signup = () => {
         headers: { "Content-Type": "multipart/form-data" },
         credentials: true,
       });
-      console.log("User registered:", res.data);
-      alert("Signup successful!"); 
+      toast.success("Signup successful!");
+      Navigate("/login")
     } catch (error) {
       console.error("Signup error:", error);
-      alert("Signup failed. Try again.");
+      toast.error("Signup failed. Please try again.");
     }
   };
 

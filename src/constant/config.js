@@ -1,1 +1,1 @@
-export const server =   import.meta.env.VITE_SERVER || "http://localhost:3000" 
+export const server =   import.meta.env.VITE_SERVER || import.meta.env.SERVER 

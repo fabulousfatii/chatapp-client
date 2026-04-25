@@ -39,7 +39,7 @@ const Login = () => {
         toast.success("login success")
 
 
-       navigate("/")
+       navigate("/chat")
      }
    } catch (error) {
       console.log(error)

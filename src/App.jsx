@@ -32,9 +32,10 @@ function App() {
             "Content-Type": "application/json"
           }
         });
-        if (response) {
+        if (response.data?.user) {
           dispatch(userExists({ userdata: response.data.user, user: true }));
-
+        } else {
+          dispatch(userNotExists({ user: false }));
         }
       } catch (error) {
         dispatch(userNotExists({ user: false }));
@@ -58,7 +59,6 @@ function App() {
             <Header/>
 
      <Routes>
-
       {/* Protected Routes */}
       <Route
         element={

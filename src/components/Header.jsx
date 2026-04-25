@@ -4,20 +4,24 @@ import Requests from "./Requests";
 import { useEffect, useRef, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import AddingGroups from "./AddingGroups";
+import { server } from "../constant/config";
+import { useSelector } from 'react-redux';
+
 
 const Header = () => {
   const[isOpen,setIsOpen]=useState(false);
+  const {user} = useSelector((state)=>state.auth);
   const navigate= useNavigate()
 
-   const handleLogout=()=>{ 
-    console.log("logout clicked");
+   const handleLogout=async()=>{ 
     try{
-      const response= fetch("http://localhost:3000/api/users/logout",{
+      const response= await fetch(`${server}/api/users/logout`,{
         method:"POST",
         credentials:"include",
       });
-      navigate("/login");
 
+
+      if(response.ok) navigate("/login");
     
     }catch(error){
       console.log(error);
@@ -47,17 +51,8 @@ const Header = () => {
         <h1 className="text-md font-semibold">ChatConnect</h1>
       </div>
 
-      {/* Middle: Search Bar */}
-      {/* <div className="hidden md:flex items-center bg-gray-800 px-3 py-1 rounded-full w-1/3">
-        <Search size={18} className="text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search chats..."
-          className="bg-transparent outline-none text-sm text-white ml-2 w-full placeholder-gray-400"
-        />
-      </div> */}
-
       {/* Right: Icons and User Profile */}
+      {user == false && 
       <div className="flex items-center space-x-4">
 
         <Requests/>
@@ -77,7 +72,7 @@ const Header = () => {
           </div>
        
 
-         </div>
+         </div>}
     </header>
     </>
   );

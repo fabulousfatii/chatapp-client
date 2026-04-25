@@ -45,7 +45,7 @@ const Signup = () => {
         credentials: true,
       });
       toast.success("Signup successful!");
-      Navigate("/login")
+      navigate("/login")
     } catch (error) {
       console.error("Signup error:", error);
       toast.error("Signup failed. Please try again.");

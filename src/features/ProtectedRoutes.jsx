@@ -4,18 +4,18 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 const ProtectedRoutes = () => {
 
-    const { user, isLoading }=useSelector((state)=>state.auth);
-
+    const { user, isLoading, userdata }=useSelector((state)=>state.auth);
+    
     if(isLoading){
         return <h1>Loading...</h1>
     }
 
-  if(!user) return <Navigate to="/login"/>
+  if(!user) return <Navigate to="/"/>
   return <Outlet/>
 }
 
 const UnprotectedRoutes = ({user}) => {
-  if(user === true) return <Navigate to="/" />
+  if(user === true) return <Navigate to="/chat" />
   else return <Outlet/>
 }
 

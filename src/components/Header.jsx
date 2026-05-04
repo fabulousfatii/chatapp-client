@@ -5,13 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import AddingGroups from "./AddingGroups";
 import { server } from "../constant/config";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { userNotExists } from "../redux/userSlice";
+
 
 
 const Header = () => {
   const[isOpen,setIsOpen]=useState(false);
   const {user} = useSelector((state)=>state.auth);
   const navigate= useNavigate()
+  const dispatch = useDispatch();
 
    const handleLogout=async()=>{ 
     try{
@@ -19,9 +22,11 @@ const Header = () => {
         method:"POST",
         credentials:"include",
       });
-
-
-      if(response.ok) navigate("/login");
+ 
+      console.log(response)
+      if(response.ok) {
+        dispatch(userNotExists({ user: false }));
+        navigate("/");}
     
     }catch(error){
       console.log(error);
@@ -52,7 +57,7 @@ const Header = () => {
       </div>
 
       {/* Right: Icons and User Profile */}
-      {user == false && 
+      {user == true && 
       <div className="flex items-center space-x-4">
 
         <Requests/>

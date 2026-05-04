@@ -59,20 +59,17 @@ function App() {
             <Header/>
 
      <Routes>
-      {/* Protected Routes */}
-      <Route
-        element={
-          <ProtectedRoutes />
-        }
-      >
+      {/* Public Routes */}
+      <Route element={<UnprotectedRoutes user={user} />}>
         <Route path="/" element={<Home />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Route>
 
-      {/* Public Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/chat" element={<Chat />} />
+      </Route>
     </Routes>
     </BrowserRouter>
       <ToastContainer
